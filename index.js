@@ -68,7 +68,7 @@ export default class TextMarquee extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.props.children !== prevProps.children) {
-      this.resetScroll()
+//       this.resetScroll()
     } else if (this.props.disabled !== prevProps.disabled) {
       if (!this.props.disabled && this.props.marqueeOnMount) {
         this.startAnimation(this.props.marqueeDelay)
