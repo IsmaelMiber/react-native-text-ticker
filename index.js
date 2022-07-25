@@ -67,8 +67,8 @@ export default class TextMarquee extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.children !== prevProps.children) {
-//       this.resetScroll()
+    if (this.props.text !== prevProps.text) {
+      this.resetScroll()
     } else if (this.props.disabled !== prevProps.disabled) {
       if (!this.props.disabled && this.props.marqueeOnMount) {
         this.startAnimation(this.props.marqueeDelay)
@@ -340,6 +340,7 @@ export default class TextMarquee extends PureComponent {
           {... props}
           style={[style, { transform: [{ translateX: this.animatedValue }], width: null }]}
         >
+          {this.props.text}
           {this.props.children}
         </Animated.Text>
         {!contentFits && !isScrolling
@@ -349,6 +350,7 @@ export default class TextMarquee extends PureComponent {
               {... props}
               style={[style, { transform: [{ translateX: this.animatedValue }], width: null }]}
             >
+              {this.props.text}
               {this.props.children}
             </Animated.Text>
           </View> : null }
@@ -361,6 +363,7 @@ export default class TextMarquee extends PureComponent {
           numberOfLines={1}
           style={[style, { opacity: !disabled && animating ? 0 : 1 }]}
         >
+          {this.props.text}
           {this.props.children}
         </Text>
         {animatedText}
